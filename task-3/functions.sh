@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Task 3 - Function Library
+# Task 3 - External Function Library
 
+# Check disk usage against a supplied threshold
 check_disk_usage() {
     local threshold="$1"
     local disk_usage
@@ -20,6 +21,7 @@ check_disk_usage() {
     fi
 }
 
+# Check memory usage against a supplied threshold
 check_memory_usage() {
     local threshold="$1"
     local memory_usage
@@ -38,6 +40,7 @@ check_memory_usage() {
     fi
 }
 
+# Print a resource status
 print_status() {
     local resource="$1"
     local status="$2"
