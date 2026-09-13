@@ -57,10 +57,19 @@ else
     echo "OK: Process count is within normal range."
 fi
 
+echo
 echo "Top Processes:"
 ps aux --sort=-%cpu | head
 
 echo
+
+if [ "$health_status" -eq 0 ]
+then
+    echo "Overall Status: HEALTHY"
+else
+    echo "Overall Status: WARNING"
+fi
+
 echo "Health check completed."
 
 exit "$health_status"
