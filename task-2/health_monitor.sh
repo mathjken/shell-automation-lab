@@ -43,6 +43,20 @@ else
 fi
 
 echo
+# Count running processes
+process_count=$(ps -e --no-headers | wc -l)
+
+echo
+echo "Total processes: $process_count"
+
+if [ "$process_count" -ge 200 ]
+then
+    echo "WARNING: High number of running processes."
+    health_status=1
+else
+    echo "OK: Process count is within normal range."
+fi
+
 echo "Top Processes:"
 ps aux --sort=-%cpu | head
 
