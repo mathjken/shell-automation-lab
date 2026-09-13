@@ -8,7 +8,9 @@ echo "===== System Health Monitor ====="
 
 echo
 echo "Disk Usage:"
-df -h /
+
+disk_info=$(df -h /)
+echo "$disk_info"
 
 # Get disk usage percentage for the root filesystem
 disk_usage=$(df / | awk 'NR==2 {print $5}' | tr -d '%')
@@ -26,7 +28,8 @@ fi
 
 echo
 echo "Memory Usage:"
-free -h
+memory_info=$(free -h)
+echo "$memory_info"
 
 # Get memory usage percentage
 memory_usage=$(free | awk '/Mem:/ {printf "%.0f", $3/$2 * 100}')
@@ -59,7 +62,8 @@ fi
 
 echo
 echo "Top Processes:"
-ps aux --sort=-%cpu | head
+process_info=$(ps aux --sort=-%cpu | head)
+echo "$process_info"
 
 echo
 
